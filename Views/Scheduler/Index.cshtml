@@ -9,12 +9,22 @@
 	}
 </style>
 
+<style>
+	.media-text-box {
+		height: 200px;
+		width: 600px;
+	}
+</style>
+
+<p></p>
+
 <div class="text-center">
 	<form asp-action="Index">
 		<h3>Tweet Content</h3>
-		<input asp-for="TweetText" />
+		<input asp-for="TweetText" class="media-text-box" />
+		<p></p>
 		<p>
-			<input type="submit" value="Tweet" />
+			<input type="submit" value="Tweet" class="btn btn-primary"  />
 		</p>
 	</form>
 </div>
