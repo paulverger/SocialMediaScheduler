@@ -13,18 +13,16 @@ namespace SocialMediaScheduler.Controllers
 	{
 		private string _TwitterApiKey;
 		private string _TwitterApiSecret;
-		private string _AccessToken;
-		private string _AccessTokenSecret;
+		private string _TwitterAccessToken;
+		private string _TwitterAccessTokenSecret;
 
-		private readonly IConfiguration _config;
-
+		
 		public SchedulerController(IConfiguration config)
 		{
-		    _config = config;
-			_TwitterApiKey = _config["Twitter:ApiKey"];
-			_TwitterApiSecret = _config["Twitter:ApiKeySecret"];
-			_AccessToken = _config["Twitter:AccessToken"];
-			_AccessTokenSecret = _config["Twitter:AccessTokenSecret"];
+			_TwitterApiKey = config["Twitter:ApiKey"];
+			_TwitterApiSecret = config["Twitter:ApiKeySecret"];
+			_TwitterAccessToken = config["Twitter:AccessToken"];
+			_TwitterAccessTokenSecret = config["Twitter:AccessTokenSecret"];
 			
 		}
 
@@ -37,7 +35,7 @@ namespace SocialMediaScheduler.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Index(Tweet tweet)
 		{
-			var userClient = new TwitterClient(_TwitterApiKey, _TwitterApiSecret, _AccessToken, _AccessTokenSecret);
+			var userClient = new TwitterClient(_TwitterApiKey, _TwitterApiSecret, _TwitterAccessToken, _TwitterAccessTokenSecret);
 			var user = await userClient.Users.GetAuthenticatedUserAsync();
 			var userTweet = await userClient.Tweets.PublishTweetAsync(tweet.TweetText.ToString());
 			return View();
