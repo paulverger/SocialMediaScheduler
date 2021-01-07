@@ -15,7 +15,6 @@ namespace SocialMediaScheduler.Controllers
 		private string _TwitterApiSecret;
 		private string _TwitterAccessToken;
 		private string _TwitterAccessTokenSecret;
-
 		
 		public SchedulerController(IConfiguration config)
 		{
@@ -25,7 +24,6 @@ namespace SocialMediaScheduler.Controllers
 			_TwitterAccessTokenSecret = config["Twitter:AccessTokenSecret"];
 			
 		}
-
 
 		[HttpGet]
 		public IActionResult Index()
